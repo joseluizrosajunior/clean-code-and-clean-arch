@@ -1,23 +1,19 @@
-import CalculateDistanceInterface from "./CalculateDistanceInterface";
-import Product from "./Product";
+import Product from './Product';
+import DistanceAbstract from './DistanceAbstract';
 
 export default class CalculateShipping {
-    cepOrigin: string;
-    cepDestiny: string;
     product: Product;
-    calculateDistance: CalculateDistanceInterface;
+    distance: DistanceAbstract;
 
-    constructor(cepOrigin: string, cepDestiny: string, product: Product, calculateDistance: CalculateDistanceInterface) {
-        this.cepOrigin = cepOrigin;
-        this.cepDestiny = cepDestiny;
+    constructor(product: Product, distance: DistanceAbstract) {
         this.product = product;
-        this.calculateDistance = calculateDistance;
+        this.distance = distance;
     }
 
     MINIMUM_SHIPPING = 10;
 
     execute() {
-        const totalShipping = this.calculateDistance.getDistance(this.cepOrigin, this.cepDestiny) * this.product.getVolume() * (this.product.getDensity() / 100);
+        const totalShipping = this.distance.getDistance() * this.product.getVolume() * (this.product.getDensity() / 100);
         return totalShipping > this.MINIMUM_SHIPPING ? totalShipping : this.MINIMUM_SHIPPING;
     }
 }

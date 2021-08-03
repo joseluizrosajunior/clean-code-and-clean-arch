@@ -6,11 +6,11 @@ export default class Cpf {
 	MAX_DIGITS_2 = 10;
 
     constructor(value: string) {
-        if (!this.validate(value)) throw new Error("Invalid CPF");
+        if (!this.validate(value)) throw new Error('Invalid CPF');
         this.value = value;
     }
 	
-	validate(cpf = "") {
+	validate(cpf = '') {
 		cpf = this.extractOnlyDigits(cpf);
 		if (this.isInvalidLength(cpf)) return false;
 		if (this.isAllDigitsEquals(cpf)) return false;
@@ -21,7 +21,7 @@ export default class Cpf {
 	}
 	
 	extractOnlyDigits(cpf: string) {
-		return cpf.replace(/\D/g, "");
+		return cpf.replace(/\D/g, '');
 	}
 	
 	isInvalidLength(cpf: string) {
@@ -30,7 +30,7 @@ export default class Cpf {
 	
 	isAllDigitsEquals(cpf: string) {
 		const [firstCharacter] = cpf;
-		return cpf.split("").every(character => character === firstCharacter);
+		return cpf.split('').every(character => character === firstCharacter);
 	}
 	
 	calculateDigit(cpf: string, factor: number, max: number) {

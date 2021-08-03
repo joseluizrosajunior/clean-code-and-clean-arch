@@ -1,6 +1,6 @@
-import Coupon from "./Coupon";
-import Cpf from "./Cpf";
-import OrderItem from "./OrderItem";
+import Coupon from './Coupon';
+import Cpf from './Cpf';
+import OrderItem from './OrderItem';
 
 export default class Order {
     cpf: Cpf;
@@ -17,7 +17,7 @@ export default class Order {
     }
 
     addCoupon (coupon: Coupon) {
-		if (coupon.isExpired()) throw new Error("Coupon expired");
+		if (coupon.isExpired()) throw new Error('Coupon expired');
         this.coupon = coupon;
     }
 

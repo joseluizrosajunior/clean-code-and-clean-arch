@@ -1,5 +1,5 @@
-import Order from "./Order";
-import Coupon from "./Coupon";
+import Order from './Order';
+import Coupon from './Coupon';
 
 export default class PlaceOrder {
     coupons: Coupon[];
@@ -7,8 +7,8 @@ export default class PlaceOrder {
 
     constructor () {
         this.coupons = [
-            new Coupon("VALE20", 20, new Date('2500-12-31')),
-            new Coupon("EXPIRED", 20, new Date('2000-12-31'))
+            new Coupon('VALE20', 20, new Date('2500-12-31')),
+            new Coupon('EXPIRED', 20, new Date('2000-12-31'))
         ];
         this.orders = [];
     }
