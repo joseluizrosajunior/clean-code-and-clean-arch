@@ -4,32 +4,32 @@ import PlaceOrderInput from './PlaceOrderInput';
 import Product from './Product';
 import FreigthCalculator from './FreigthCalculator';
 import DistanceApi from './DistanceApi';
+import ProductRepository from './ProductRepository';
+import OrderRepository from './OrderRepository';
 
 export default class PlaceOrder {
     coupons: Coupon[];
     orders: Order[];
-    products: Product[];
+    productRepository: ProductRepository;
     distanceApi: DistanceApi;
+    orderRepository: OrderRepository;
 
-    constructor (distanceApi: DistanceApi) {
+    constructor (distanceApi: DistanceApi, productRepository: ProductRepository, orderRepository: OrderRepository) {
         this.coupons = [
             new Coupon('VALE20', 20, new Date('2500-12-31')),
             new Coupon('EXPIRED', 20, new Date('2000-12-31'))
         ];
         this.orders = [];
-        this.products = [
-            new Product('1', 'Guitarra', 1000, 20, 100, 30, 10),
-            new Product('2', 'Amplificador', 5000, 50, 50, 50, 22),
-            new Product('3', 'Cabo', 30, 10, 10, 10, 1)
-        ],
+        this.productRepository = productRepository,
+        this.orderRepository = orderRepository;
         this.distanceApi = distanceApi;
     }
 
     execute (input: PlaceOrderInput) {
-        const order = new Order(input.cpf);
+        const order = new Order(input.cpf, this.orderRepository);
         const distance = this.distanceApi.getDistance('88815333', input.destiny);
         for (const orderItem of input.items) {
-            const item = this.products.find(item => item.id === orderItem.id);
+            const item = this.productRepository.getProductById(orderItem.id);
             if (!item) throw new Error("Item not found");
             order.addItem(orderItem.id, item.price, orderItem.quantity);
             const freigthCalculator = new FreigthCalculator(item, distance);

@@ -1,17 +1,21 @@
 import Coupon from './Coupon';
 import Cpf from './Cpf';
 import OrderItem from './OrderItem';
+import OrderCode from './OrderCode';
+import OrderRepository from './OrderRepository';
 
 export default class Order {
+    id: OrderCode;
     cpf: Cpf;
     items: OrderItem[];
     coupon: Coupon | undefined;
     freigth: number;
 
-    constructor (cpf: string) {
+    constructor (cpf: string, orderRepository?: OrderRepository) {
         this.cpf = new Cpf(cpf);
         this.items = [];
         this.freigth = 0;
+        this.id = new OrderCode(orderRepository);
     }
 
     addItem (id: string, price: number, quantity: number) {

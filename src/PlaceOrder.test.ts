@@ -1,6 +1,8 @@
 import DistanceApiInMemory from './DistanceApiInMemory';
+import OrderRepositoryInMemory from './OrderRepositoryInMemory';
 import PlaceOrder from './PlaceOrder';
 import PlaceOrderInput from './PlaceOrderInput';
+import ProductRepositoryInMemory from './ProductRepositoryInMemory';
 
 test('Deve fazer um pedido', function () {
     const input = new PlaceOrderInput({
@@ -13,7 +15,7 @@ test('Deve fazer um pedido', function () {
         coupon: 'VALE20',
         destiny: '88851222'
     });
-    const placeOrder = new PlaceOrder(new DistanceApiInMemory());
+    const placeOrder = new PlaceOrder(new DistanceApiInMemory(), new ProductRepositoryInMemory(), new OrderRepositoryInMemory());
     const output = placeOrder.execute(input);
     expect(output.total).toBe(6122);
 });
@@ -29,7 +31,7 @@ test('Não deve fazer um pedido com cupom expirado', function () {
         coupon: 'EXPIRED',
         destiny: '88815000'
     });
-    const placeOrder = new PlaceOrder(new DistanceApiInMemory());
+    const placeOrder = new PlaceOrder(new DistanceApiInMemory(), new ProductRepositoryInMemory(), new OrderRepositoryInMemory());
     expect(() => placeOrder.execute(input)).toThrow(new Error('Coupon expired'));
 });
 
@@ -43,7 +45,7 @@ test('Deve fazer um pedido com frete', function () {
         ],
         destiny: '88815333'
     });
-    const placeOrder = new PlaceOrder(new DistanceApiInMemory());
+    const placeOrder = new PlaceOrder(new DistanceApiInMemory(), new ProductRepositoryInMemory(), new OrderRepositoryInMemory());
     const output = placeOrder.execute(input);
     expect(output.freigth).toBe(450);
 });
