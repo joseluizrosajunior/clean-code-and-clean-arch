@@ -1,15 +1,16 @@
 export default class Coupon {
     code: string;
     percentage: number;
-    expireAt: Date;
+    expireDate: Date;
 
-    constructor (code: string, percentage: number, expireAt: Date) {
+    constructor (code: string, percentage: number, expireDate: Date) {
         this.code = code;
         this.percentage = percentage;
-        this.expireAt = expireAt;
+        this.expireDate = expireDate;
     }
 
     isExpired() {
-        return new Date() > this.expireAt;
+        const totay = new Date();
+        return this.expireDate.getTime() < totay.getTime();
     }
 }
