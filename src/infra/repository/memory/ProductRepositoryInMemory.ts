@@ -1,5 +1,5 @@
-import Product from "./Product";
-import ProductRepository from "./ProductRepository";
+import Product from "../../../domain/entity/Product";
+import ProductRepository from "../../../domain/repository/ProductRepository";
 
 export default class ProductRepositoryInMemory implements ProductRepository {
     private products = [

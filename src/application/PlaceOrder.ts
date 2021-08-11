@@ -1,11 +1,10 @@
-import Order from './Order';
-import Coupon from './Coupon';
+import Order from '../domain/entity/Order';
+import Coupon from '../domain/entity/Coupon';
 import PlaceOrderInput from './PlaceOrderInput';
-import Product from './Product';
+import DistanceApi from '../domain/gateway/DistanceApi';
+import ProductRepository from '../domain/repository/ProductRepository';
+import OrderRepository from '../domain/repository/OrderRepository';
 import FreigthCalculator from './FreigthCalculator';
-import DistanceApi from './DistanceApi';
-import ProductRepository from './ProductRepository';
-import OrderRepository from './OrderRepository';
 
 export default class PlaceOrder {
     coupons: Coupon[];

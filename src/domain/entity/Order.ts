@@ -2,7 +2,7 @@ import Coupon from './Coupon';
 import Cpf from './Cpf';
 import OrderItem from './OrderItem';
 import OrderCode from './OrderCode';
-import OrderRepository from './OrderRepository';
+import OrderRepository from '../repository/OrderRepository';
 
 export default class Order {
     id: OrderCode;

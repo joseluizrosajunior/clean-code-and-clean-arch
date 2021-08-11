@@ -1,4 +1,4 @@
-import Product from './Product';
+import Product from '../../src/domain/entity/Product';
 
 test('Deve calcular o colume de um produto', () => {
     const produto = new Product('1', 'Guitarra', 20, 100, 30, 10, 3);

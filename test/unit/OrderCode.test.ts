@@ -1,5 +1,5 @@
-import OrderCode from "./OrderCode";
-import OrderRepositoryInMemory from "./OrderRepositoryInMemory";
+import OrderCode from "../../src/domain/entity/OrderCode";
+import OrderRepositoryInMemory from "../../src/infra/repository/memory/OrderRepositoryInMemory";
 
 test('Deve gerar o código do pedido', () => {
     const year = (new Date()).getFullYear();

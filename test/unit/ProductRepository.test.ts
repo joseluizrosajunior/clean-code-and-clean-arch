@@ -1,4 +1,4 @@
-import ProductRepositoryInMemory from "./ProductRepositoryInMemory";
+import ProductRepositoryInMemory from "../../src/infra/repository/memory/ProductRepositoryInMemory";
 
 test('Deve obter uma lista de produtos', () => {
     const repository = new ProductRepositoryInMemory();

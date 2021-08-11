@@ -1,6 +1,6 @@
-import Coupon from './Coupon';
-import Order from './Order';
-import OrderRepositoryInMemory from './OrderRepositoryInMemory';
+import Coupon from '../../src/domain/entity/Coupon';
+import Order from '../../src/domain/entity/Order';
+import OrderRepositoryInMemory from '../../src/infra/repository/memory/OrderRepositoryInMemory';
 
 test('Não deve criar um pedido com CPF inválido', function () {
     const cpf = '111.111.111-11';

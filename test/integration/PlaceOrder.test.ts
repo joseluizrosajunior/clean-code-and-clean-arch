@@ -1,8 +1,8 @@
-import DistanceApiInMemory from './DistanceApiInMemory';
-import OrderRepositoryInMemory from './OrderRepositoryInMemory';
-import PlaceOrder from './PlaceOrder';
-import PlaceOrderInput from './PlaceOrderInput';
-import ProductRepositoryInMemory from './ProductRepositoryInMemory';
+import DistanceApiInMemory from '../../src/infra/gateway/memory/DistanceApiInMemory';
+import OrderRepositoryInMemory from '../../src/infra/repository/memory/OrderRepositoryInMemory';
+import PlaceOrder from '../../src/application/PlaceOrder';
+import PlaceOrderInput from '../../src/application/PlaceOrderInput';
+import ProductRepositoryInMemory from '../../src/infra/repository/memory/ProductRepositoryInMemory';
 
 test('Deve fazer um pedido', function () {
     const input = new PlaceOrderInput({
