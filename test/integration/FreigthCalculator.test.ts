@@ -1,5 +1,5 @@
 import DistanceApiInMemory from '../../src/infra/gateway/memory/DistanceApiInMemory';
-import FreigthCalculator from '../../src/application/FreigthCalculator';
+import FreigthCalculator from '../../src/domain/service/FreigthCalculator';
 import Product from '../../src/domain/entity/Product';
 
 test('Deve calcular o valor do frete com base na distância, dimensões e peso', () => {

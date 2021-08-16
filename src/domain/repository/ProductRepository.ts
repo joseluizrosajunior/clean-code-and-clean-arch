@@ -1,6 +1,6 @@
 import Product from "../entity/Product";
 
 export default interface ProductRepository {
-    getAllProducts(): Product[];
-    getProductById(id: string): Product;
+    getAll(): Promise<Product[]>;
+    getById(id: string): Promise<Product|undefined>;
 }

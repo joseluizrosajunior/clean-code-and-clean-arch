@@ -1,4 +1,4 @@
-import Product from "../domain/entity/Product";
+import Product from "../entity/Product";
 
 export default class FreigthCalculator {
     product: Product;

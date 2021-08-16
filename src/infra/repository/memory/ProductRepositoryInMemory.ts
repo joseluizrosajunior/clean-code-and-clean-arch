@@ -8,13 +8,13 @@ export default class ProductRepositoryInMemory implements ProductRepository {
         new Product('3', 'Cabo', 30, 10, 10, 10, 1)
     ];
 
-    getAllProducts(): Product[] {
-        return this.products;
+    getAll(): Promise<Product[]> {
+        return Promise.resolve(this.products);
     }
 
-    getProductById(id: string): Product {
+    getById(id: string): Promise<Product|undefined> {
         const product =  this.products.find(p => p.id === id);
         if (!product) throw new Error("Product not foud");
-        return product;
+        return Promise.resolve(product);
     }
 }

@@ -4,7 +4,7 @@ import PlaceOrderInput from './PlaceOrderInput';
 import DistanceApi from '../domain/gateway/DistanceApi';
 import ProductRepository from '../domain/repository/ProductRepository';
 import OrderRepository from '../domain/repository/OrderRepository';
-import FreigthCalculator from './FreigthCalculator';
+import FreigthCalculator from '../domain/service/FreigthCalculator';
 
 export default class PlaceOrder {
     coupons: Coupon[];
@@ -24,11 +24,11 @@ export default class PlaceOrder {
         this.distanceApi = distanceApi;
     }
 
-    execute (input: PlaceOrderInput) {
+    async execute (input: PlaceOrderInput) {
         const order = new Order(input.cpf, this.orderRepository);
         const distance = this.distanceApi.getDistance('88815333', input.destiny);
         for (const orderItem of input.items) {
-            const item = this.productRepository.getProductById(orderItem.id);
+            const item = await this.productRepository.getById(orderItem.id);
             if (!item) throw new Error("Item not found");
             order.addItem(orderItem.id, item.price, orderItem.quantity);
             const freigthCalculator = new FreigthCalculator(item, distance);
