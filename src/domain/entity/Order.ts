@@ -1,30 +1,36 @@
-import Coupon from './Coupon';
-import Cpf from './Cpf';
-import OrderItem from './OrderItem';
-import OrderCode from './OrderCode';
-import OrderRepository from '../repository/OrderRepository';
+import Coupon from "./Coupon";
+import Cpf from "./Cpf";
+import OrderCode from "./OrderCode";
+import OrderItem from "./OrderItem";
 
 export default class Order {
-    id: OrderCode;
     cpf: Cpf;
     items: OrderItem[];
     coupon: Coupon | undefined;
-    freigth: number;
+    freight: number;
+    taxes: number;
+    code: OrderCode;
+    issueDate: Date;
+    sequence: number;
 
-    constructor (cpf: string, orderRepository?: OrderRepository) {
+    constructor (cpf: string, issueDate: Date = new Date(), sequence: number = 1) {
         this.cpf = new Cpf(cpf);
         this.items = [];
-        this.freigth = 0;
-        this.id = new OrderCode(orderRepository);
+        this.freight = 0;
+        this.taxes = 0;
+        this.issueDate = issueDate;
+        this.sequence = sequence;
+        this.code = new OrderCode(issueDate, sequence);
     }
 
-    addItem (id: string, price: number, quantity: number) {
-        this.items.push(new OrderItem(id, price, quantity));
+    addItem (idItem: number, price: number, quantity: number) {
+        this.items.push(new OrderItem(idItem, price, quantity));
     }
 
     addCoupon (coupon: Coupon) {
-		if (coupon.isExpired()) throw new Error('Coupon expired');
-        this.coupon = coupon;
+        if (!coupon.isExpired()) {
+            this.coupon = coupon;
+        }
     }
 
     getTotal () {
@@ -35,7 +41,7 @@ export default class Order {
         if (this.coupon) {
             total -= (total * this.coupon.percentage)/100;
         }
-        total += this.freigth;
+        total += this.freight;
         return total;
     }
 }

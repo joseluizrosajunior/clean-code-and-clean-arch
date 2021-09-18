@@ -10,7 +10,7 @@ export default class Coupon {
     }
 
     isExpired() {
-        const totay = new Date();
-        return this.expireDate.getTime() < totay.getTime();
+        const today = new Date();
+        return (this.expireDate.getTime() < today.getTime());
     }
 }

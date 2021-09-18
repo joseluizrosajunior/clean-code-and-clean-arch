@@ -1,25 +1,22 @@
 {
-  "name": "clean-code-and-clean-arch",
+  "name": "cccat2_1",
   "version": "1.0.0",
-  "description": "Curso de Clean Code e Clean Architecture com Rodrigo Branas",
-  "main": "cpfValidate.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "test": "tsc && jest ./dist --forceExit",
-    "tsc:init": "tsc --init"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://gitlab.com/estudos-junior/clean-code-and-clean-arch.git"
+    "main": "tsc && node ./dist/src/main"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://gitlab.com/estudos-junior/clean-code-and-clean-arch/issues"
-  },
-  "homepage": "https://gitlab.com/estudos-junior/clean-code-and-clean-arch#readme",
   "dependencies": {
+    "@hapi/hapi": "^20.1.5",
+    "@types/express": "^4.17.13",
+    "@types/hapi__hapi": "^20.0.9",
     "@types/jest": "^26.0.24",
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
     "jest": "^27.0.6",
     "pg-promise": "^10.11.0",
     "typescript": "^4.3.5"

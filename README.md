@@ -1,11 +1,10 @@
-# Clean Code and Clean Architecture
+Este conteúdo é parte do curso Clean Code e Clean Architecture da Branas.io
 
-Curso de Clean Code e Clean Architecture com Rodrigo Branas
+Para mais informações acesse:
 
-Code smell:
-- nomes estranhos -> renomear
-- numeros mágicos -> substituir por constantes
-- reatribuição de variável
-- comentários
-- linhas em branco
-- retornos estranhos (quem chama o metodo tem que fazer um if)
+https://app.branas.io/clean-code-e-clean-architecture
+
+Instruções:
+
+npm install
+npm run test
